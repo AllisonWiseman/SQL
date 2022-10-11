@@ -1,0 +1,10 @@
+CREATE TABLE home (id INTEGER PRIMARY KEY, name TEXT, price INTEGER, aisle INTEGER, color TEXT);
+INSERT INTO home VALUES
+(1, "chair", 20, 2, "grey"),
+(2, "lamp", 10, 1, "white"),
+(3, "lamp", 12, 1, "black"),
+(4, "desk", 50, 3, "brown"),
+(5, "desk", 60, 3, "white");
+SELECT * FROM home;
+SELECT * FROM home ORDER BY price;
+SELECT MAX(price) FROM home;
