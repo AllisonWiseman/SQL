@@ -1,0 +1,68 @@
+/* Create table about the people and what they do here */
+CREATE TABLE characters (id INTEGER PRIMARY KEY, name TEXT, movie TEXT, company TEXT, release_year INTEGER);
+INSERT INTO characters VALUES (1, "Rapunzel", "Tangled", "Disney", 2010);
+INSERT INTO characters VALUES (2, "Ariel", "The Little Mermaid", "Disney", 1989);
+INSERT INTO characters VALUES (3, "Spiderman", "Spiderman", "Marvel", 2002);
+INSERT INTO characters VALUES (4, "The Hulk", "Hulk", "Marvel", 2003);
+INSERT INTO characters VALUES (5, "Batman" , "The Dark Knight", "DC",2008);
+
+CREATE TABLE ratings (id INTEGER PRIMARY KEY, movie TEXT, rating INTEGER);
+INSERT INTO ratings VALUES (1, "Tangled", 7.7);
+INSERT INTO ratings VALUES (2, "The Little Mermaid", 7.6);
+INSERT INTO ratings VALUES (3, "Spiderman", 7.4);
+INSERT INTO ratings VALUES (4, "Hulk", 5.6);
+INSERT INTO ratings VALUES (5, "The Dark Knight", 9);
+SELECT * FROM ratings;
+SELECT * FROM characters;
+
+SELECT characters.release_year, characters.movie, ratings.rating
+FROM characters
+JOIN ratings
+ON characters.id = ratings.id
+ORDER BY release_year DESC;
+
+SELECT characters.company, ratings.movie, ratings.rating
+FROM characters
+JOIN ratings
+ON characters.id= ratings.id;
+
+DATABASE SCHEMA
+characters5 rows
+id (PK)INTEGER
+nameTEXT
+movieTEXT
+companyTEXT
+release_yearINTEGER
+ratings5 rows
+id (PK)INTEGER
+movieTEXT
+ratingINTEGER
+QUERY RESULTS
+
+id	movie	rating
+1	Tangled	7.7
+2	The Little Mermaid	7.6
+3	Spiderman	7.4
+4	Hulk	5.6
+5	The Dark Knight	9
+
+id	name	movie	company	release_year
+1	Rapunzel	Tangled	Disney	2010
+2	Ariel	The Little Mermaid	Disney	1989
+3	Spiderman	Spiderman	Marvel	2002
+4	The Hulk	Hulk	Marvel	2003
+5	Batman	The Dark Knight	DC	2008
+
+release_year	movie	rating
+2010	Tangled	7.7
+2008	The Dark Knight	9
+2003	Hulk	5.6
+2002	Spiderman	7.4
+1989	The Little Mermaid	7.6
+
+company	movie	rating
+Disney	Tangled	7.7
+Disney	The Little Mermaid	7.6
+Marvel	Spiderman	7.4
+Marvel	Hulk	5.6
+DC	The Dark Knight	9
