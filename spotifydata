@@ -39,3 +39,12 @@ SELECT SUM(duration_ms)/60000, artist_name
 FROM BIT_DB.Spotifydata
 GROUP BY artist_name
 ORDER BY duration_ms;
+
+--create temp table and find artist with average popularity of 90 or above and tag as Top Star--
+WITH popularity_avg_CTE AS (SELECT s.artist_name, avg(s.popularity) AS average_popularity
+FROM Spotifydata s
+GROUP BY s.artist_name)
+
+SELECT artist_name, average_popularity, 'Top Star' AS tag
+FROM popularity_avg_CTE
+WHERE average_popularity>=90; 
